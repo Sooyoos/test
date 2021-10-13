@@ -1,0 +1,413 @@
+{
+    "info": {
+        "_postman_id": "10914558-3529-46f1-bd58-378d1d685e06",
+        "name": "PierreFrey Web",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "get a User",
+            "id": "020f9fda-9d46-4e47-9fdb-2564e0779b71",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "<Bearer Token>",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/users/current-user",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "users",
+                        "current-user"
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "id": "0c27a5b2-4fe7-463b-b1ce-5602331474a8",
+                    "name": "successful operation",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/users/current-user",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "users",
+                                "current-user"
+                            ]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "{\n \"email\": \"cillum\",\n \"password\": \"cupidatat labore aliqua\",\n \"firstname\": \"voluptate fugiat proident id\",\n \"lastname\": \"dolore veniam adipisici\",\n \"code\": \"quis qui occaecat ad\",\n \"address\": \"officia Lorem adipisicing\",\n \"address2\": \"ullamco ex aliquip\",\n \"city\": \"enim est consectetur\",\n \"country\": \"dolore consectetur\"\n}"
+                },
+                {
+                    "id": "3e70c1b0-01f7-4c3a-9639-7c761700e38e",
+                    "name": "Access token is missing or invalid",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/users/current-user",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "users",
+                                "current-user"
+                            ]
+                        }
+                    },
+                    "status": "Unauthorized",
+                    "code": 401,
+                    "_postman_previewlanguage": "text",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": ""
+                }
+            ]
+        },
+        {
+            "name": "Logs user into the system",
+            "id": "7cef9385-b2af-454d-adbd-e2551c257884",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/login?email=nulla mollit&password=nulla mollit",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "login"
+                    ],
+                    "query": [
+                        {
+                            "key": "email",
+                            "value": "nulla mollit",
+                            "description": "(Required) The user email for login"
+                        },
+                        {
+                            "key": "password",
+                            "value": "nulla mollit",
+                            "description": "(Required) The password for login in clear text"
+                        }
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "id": "27399cf4-a31c-4ffb-9448-ba64aba4a4f8",
+                    "name": "get the JWT",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/login?email=nulla mollit&password=nulla mollit",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "login"
+                            ],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "nulla mollit"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "nulla mollit"
+                                }
+                            ]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "text",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": "7WK5T79u5mIzjIXXi2oI9Fglmgivv7RAJ7izyj9tUyQ"
+                },
+                {
+                    "id": "24ec8d65-c34f-4218-a2bd-c2e1f567e530",
+                    "name": "Invalid username/password supplied",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/login?email=nulla mollit&password=nulla mollit",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "login"
+                            ],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "nulla mollit"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "nulla mollit"
+                                }
+                            ]
+                        }
+                    },
+                    "status": "Bad Request",
+                    "code": 400,
+                    "_postman_previewlanguage": "text",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": ""
+                }
+            ]
+        },
+        {
+            "name": "check if the token is valid",
+            "id": "9e00e354-9ebd-4765-b712-9e12a9c47100",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "<Bearer Token>",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/valid-token",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "valid-token"
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "id": "7b83029f-8299-4842-9a3a-a124b489eecf",
+                    "name": "JWT OK",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/valid-token",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "valid-token"
+                            ]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "text",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": ""
+                },
+                {
+                    "id": "5e196876-2339-4e99-9fe0-67775fa54c2b",
+                    "name": "Access token is missing or invalid",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/valid-token",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "valid-token"
+                            ]
+                        }
+                    },
+                    "status": "Unauthorized",
+                    "code": 401,
+                    "_postman_previewlanguage": "text",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": ""
+                }
+            ]
+        },
+        {
+            "name": "invalidate JWT",
+            "id": "c47f79c9-69ca-4d5b-98e2-ae3c544be67a",
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "<Bearer Token>",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/logout",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        "logout"
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "id": "107bbbb7-57ca-47a9-8c46-f31669c39d05",
+                    "name": "successful operation",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/logout",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "logout"
+                            ]
+                        }
+                    },
+                    "status": "Internal Server Error",
+                    "code": 500,
+                    "_postman_previewlanguage": "text",
+                    "header": [
+                        {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                        }
+                    ],
+                    "cookie": [],
+                    "responseTime": null,
+                    "body": ""
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "<Bearer Token>",
+                "type": "string"
+            }
+        ]
+    },
+    "variable": [
+        {
+            "id": "9e935728-6e87-4f63-87be-08f848bc7afd",
+            "key": "baseUrl",
+            "value": "https://virtserver.swaggerhub.com/Sooyoos1/pierrefrey/0.1",
+            "type": "string"
+        }
+    ]
+}

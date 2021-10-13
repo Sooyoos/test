@@ -1,0 +1,109 @@
+openapi: 3.0.0
+info:
+  version: '0.1'
+  title: 'PierrefreyWeb'
+servers:
+  - description: Pierrefrey Web
+    url: localhost:3000
+paths:
+  /users/current-user:
+        get:
+          security:
+            - bearerAuth: []
+          summary: get a User
+          responses:
+              '200':
+                description: successful operation
+                content:
+                  application/json:
+                   schema:
+                     $ref: '#/components/schemas/User'
+              '401':
+                $ref: '#/components/responses/UnauthorizedError'
+  /login:
+        post:
+          summary: Logs user into the system
+          tags:
+              - user
+          parameters:
+              - name: email
+                in: query
+                description: The user email for login
+                required: true
+                schema:
+                  type: string
+              - name: password
+                in: query
+                description: The password for login in clear text
+                required: true
+                schema:
+                  type: string
+          responses:
+              '200':
+                description: get the JWT
+                content:
+                  text/plain:
+                    schema:
+                      type: string
+                    example: '7WK5T79u5mIzjIXXi2oI9Fglmgivv7RAJ7izyj9tUyQ'
+              '400':
+                description: Invalid username/password supplied
+  /valid-token:
+        post:
+          security:
+            - bearerAuth: []
+          summary: check if the token is valid
+          responses:
+              '200':
+                description: JWT OK
+              '401':
+                $ref: '#/components/responses/UnauthorizedError'
+  /logout:
+    post:
+        security:
+            - bearerAuth: []
+        tags:
+            - user
+        summary: invalidate JWT
+        operationId: logoutUser
+        responses:
+            default:
+                description: successful operation
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - email
+        - password
+        - firstname
+        - lastname
+      properties:
+        email:
+          type: string
+        code:
+          type: string
+        password:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        address:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT  
+security:
+  - bearerAuth: []
